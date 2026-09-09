@@ -1,10 +1,16 @@
 {
-  "name": "jsTTS",
+  "name": "jstts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Biblioteca de leitura de tela nativa em JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Sem suíte de testes configurada\""
   },
-  "private": true
+  "keywords": [
+    "tts",
+    "accessibility",
+    "speech"
+  ],
+  "author": "",
+  "license": "MIT"
 }
