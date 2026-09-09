@@ -1,22 +1,16 @@
 {
   "name": "jstts",
   "version": "1.0.0",
-  "description": "**jsTTS** é uma biblioteca JavaScript leve e simplificada para conversão de texto em fala (Text-to-Speech), que faz a ponte direta com o motor de síntese de voz nativo do sistema operacional (como o Windows SAPI) através da **Web Speech API** nativa dos navegadores.",
+  "description": "Biblioteca de leitura de tela nativa em JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Sem suíte de testes configurada\""
   },
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lukasalmeida/jsTTS.git"
-  },
-  "keywords": [],
+  "keywords": [
+    "tts",
+    "accessibility",
+    "speech"
+  ],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/lukasalmeida/jsTTS/issues"
-  },
-  "homepage": "https://github.com/lukasalmeida/jsTTS#readme"
+  "license": "MIT"
 }
