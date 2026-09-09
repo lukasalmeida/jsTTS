@@ -237,7 +237,7 @@
                 </div>
             </div>
             <div class="jstts-hero-typography-block flex flex-col gap-y-space-2xs"><h2
-                    class="hero-headline font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+                    class="hero-headline leia-aqui font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
                 Leitura de tela facilitada com <span
                     class="hero-gradient-text bg-clip-text text-transparent bg-gradient-to-r from-primary-container via-tertiary to-secondary-container font-extrabold">jsTTS</span>
             </h2>
@@ -291,7 +291,7 @@
             </div>
             <div class="jstts-action-buttons-group flex flex-col gap-y-space-xs pt-space-2xs">
                 <button class="primary-action-cta w-full h-[50px] rounded-xl bg-gradient-to-r from-primary-container via-tertiary-container to-secondary-container text-white font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-[0_6px_20px_-2px_rgba(255,98,0,0.38)] active:scale-[0.98] transition-transform"
-                        id="btn-primary-action"><span
+                        id="btn-primary-action" onclick="lerElemento('h2.leia-aqui', 'text')"><span
                         class="material-symbols-outlined text-[20px]">volume_up</span><span class="">Testar Leitura de Voz (Demo)</span>
                 </button>
                 <button class="secondary-action-cta w-full h-[46px] rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-lg text-label-lg font-semibold flex items-center justify-center gap-space-xs active:scale-[0.98] transition-transform"
@@ -302,6 +302,41 @@
         </div>
     </div>
     <script>
+        function lerElemento(seletorTag, propriedade, opcoes = {}) {
+            const elemento = document.querySelector(seletorTag);
+
+            if (!elemento) {
+                console.warn(`Elemento '${seletorTag}' não foi encontrado.`);
+                return;
+            }
+
+            let textoParaLer = "";
+
+            if (propriedade.toLowerCase() === "text" || propriedade.toLowerCase() === "innertext") {
+                textoParaLer = elemento.innerText || elemento.textContent;
+            } else {
+                textoParaLer = elemento.getAttribute(propriedade);
+            }
+
+            if (!textoParaLer) {
+                console.warn(`A propriedade/atributo '${propriedade}' não possui texto para leitura.`);
+                return;
+            }
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+
+            const mensagem = new SpeechSynthesisUtterance(textoParaLer);
+
+            mensagem.lang = opcoes.lang || "pt-BR";
+            mensagem.rate = opcoes.rate || 1.0;
+            mensagem.pitch = opcoes.pitch || 1.0;
+
+            window.speechSynthesis.speak(mensagem);
+            console.log(mensagem)
+        }
+
         (function initDemoInteraction() {
             const toggleBtn = document.getElementById('demo-toggle-trigger');
             const toggleThumb = document.getElementById('demo-toggle-thumb');
@@ -329,19 +364,6 @@
                         latencyVal.textContent = '0.0ms';
                         latencyVal.className = 'latency-numeric font-label-sm text-label-sm text-on-surface-variant font-mono';
                     }
-                });
-            }
-
-            if (primaryBtn) {
-                primaryBtn.addEventListener('click', () => {
-                    const originalText = primaryBtn.innerHTML;
-                    primaryBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Sincronizando...</span>';
-                    setTimeout(() => {
-                        primaryBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span><span>Acelerador Ativado!</span>';
-                        setTimeout(() => {
-                            primaryBtn.innerHTML = originalText;
-                        }, 1800);
-                    }, 900);
                 });
             }
         })();
