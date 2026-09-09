@@ -121,7 +121,7 @@ lerElemento("div.noticia", "text", {
                          PROJETO jsTTS
              Módulo de Leitura Nativa via Web Speech API
 ===================================================================
-  Desenvolvido por: Desenvolvedor Senior
+  Desenvolvido por: LUKASALMEIDA
   Licença: MIT
   Compatibilidade: Navegadores Modernos (Chrome, Edge, Firefox, Safari)
   Motor de Voz: Nativo do Sistema Operacional (Windows/SAPI, macOS, Linux)
