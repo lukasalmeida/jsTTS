@@ -26,7 +26,7 @@ function lerElemento(seletorTag, propriedade, opcoes = {}) {
     const mensagem = new SpeechSynthesisUtterance(textoParaLer);
 
     mensagem.lang = opcoes.lang || "pt-BR";
-    mensagem.rate = opcoes.rate || 1.0;
+    mensagem.rate = opcoes.rate || 2.0;
     mensagem.pitch = opcoes.pitch || 1.0;
 
     window.speechSynthesis.speak(mensagem);
